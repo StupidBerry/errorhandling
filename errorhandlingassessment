@@ -1,0 +1,18 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract VotingEligibility {
+
+    uint constant voteAge = 18;
+    event agecheck(string message);
+    function checkEligibility(uint age) public {
+        require(age > 0, "Age must be greater than 0");
+        assert(age < 150); 
+
+        if (age >= voteAge) {
+            emit agecheck("You are eligible to vote.");
+        } else {
+            revert("You are not eligible to vote.");
+        }
+    }
+}
